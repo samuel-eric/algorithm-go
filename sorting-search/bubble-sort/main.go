@@ -21,17 +21,28 @@ func main() {
 	slice2 := make([]int, len(slice1))
 	copy(slice2, slice1)
 
+	slice3 := make([]int, len(slice1))
+	copy(slice3, slice1)
+
 	fmt.Println("Normal bubble sort")
 	start := time.Now()
 	bubbleSort(slice1)
-	checkSorted(slice1)
 	fmt.Println(time.Since(start).String())
+	checkSorted(slice1)
 
 	fmt.Println()
 
 	fmt.Println("Optimized bubble sort")
 	start = time.Now()
 	optimizedBubbleSort(slice2)
-	checkSorted(slice2)
 	fmt.Println(time.Since(start).String())
+	checkSorted(slice2)
+
+	fmt.Println()
+
+	fmt.Println("Cocktail shaker sort")
+	start = time.Now()
+	cocktailShakerSort(slice3)
+	fmt.Println(time.Since(start).String())
+	checkSorted(slice3)
 }

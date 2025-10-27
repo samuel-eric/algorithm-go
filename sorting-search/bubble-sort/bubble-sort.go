@@ -29,3 +29,29 @@ func optimizedBubbleSort(slice []int) {
 		n = newn
 	}
 }
+
+func cocktailShakerSort(slice []int) {
+	swapped := true
+	for swapped {
+		swapped := false
+
+		for i := 1; i < len(slice); i++ {
+			if slice[i-1] > slice[i] {
+				slice[i-1], slice[i] = slice[i], slice[i-1]
+				swapped = true
+			}
+		}
+
+		if !swapped {
+			break
+		}
+
+		swapped = false
+		for i := len(slice) - 1; i > 0; i-- {
+			if slice[i-1] > slice[i] {
+				slice[i-1], slice[i] = slice[i], slice[i-1]
+				swapped = true
+			}
+		}
+	}
+}
