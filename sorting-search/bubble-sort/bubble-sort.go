@@ -14,3 +14,18 @@ func bubbleSort(slice []int) {
 		}
 	}
 }
+
+func optimizedBubbleSort(slice []int) {
+	n := len(slice)
+
+	for n >= 1 {
+		newn := 0
+		for i := 1; i < n; i++ {
+			if slice[i-1] > slice[i] {
+				slice[i-1], slice[i] = slice[i], slice[i-1]
+				newn = i
+			}
+		}
+		n = newn
+	}
+}
