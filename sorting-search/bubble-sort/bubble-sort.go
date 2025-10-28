@@ -33,7 +33,7 @@ func optimizedBubbleSort(slice []int) {
 func cocktailShakerSort(slice []int) {
 	swapped := true
 	for swapped {
-		swapped := false
+		swapped = false
 
 		for i := 1; i < len(slice); i++ {
 			if slice[i-1] > slice[i] {
