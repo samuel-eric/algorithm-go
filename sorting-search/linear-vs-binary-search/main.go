@@ -14,9 +14,17 @@ func main() {
 	fmt.Scanln(&max)
 
 	slice := makeRandomSlice(numItems, max)
+	sortedSlice := make([]int, len(slice))
+	copy(sortedSlice, slice)
+	quicksort(sortedSlice)
+	fmt.Println("Slice:")
 	printSlice(slice, 40)
+	fmt.Println("Sorted slice:")
+	printSlice(sortedSlice, 40)
 
 	for {
+		fmt.Println()
+
 		var input string
 		fmt.Printf("Target: ")
 		fmt.Scanln(&input)
@@ -32,8 +40,23 @@ func main() {
 			continue
 		}
 
+		fmt.Println()
+
+		fmt.Println("Linear search")
 		start := time.Now()
 		index, numTests := linearSearch(slice, target)
+		if index == -1 {
+			fmt.Printf("Target %d not found, %d tests\n", target, numTests)
+		} else {
+			fmt.Printf("values[%d] = %d, %d tests\n", index, target, numTests)
+		}
+		fmt.Println("Time:", time.Since(start).String())
+
+		fmt.Println()
+
+		fmt.Println("Binary search")
+		start = time.Now()
+		index, numTests = binarySearch(sortedSlice, target)
 		if index == -1 {
 			fmt.Printf("Target %d not found, %d tests\n", target, numTests)
 		} else {
