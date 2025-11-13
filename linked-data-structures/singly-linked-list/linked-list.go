@@ -127,12 +127,7 @@ func (list *LinkedList) push(value string) {
 }
 
 func (list *LinkedList) pop() string {
-	popCell := list.sentinel.next
-	if popCell == nil {
-		return ""
-	}
-	list.sentinel.deleteAfter()
-	return popCell.data
+	return list.sentinel.deleteAfter().data
 }
 
 func (list *LinkedList) contains(value string) bool {
